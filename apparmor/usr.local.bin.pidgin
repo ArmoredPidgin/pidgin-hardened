@@ -18,8 +18,6 @@
 
 
   deny /bin/dash x,
-  deny /home/raphael/.config/oxygen-gtk/argb-apps.conf rw,
-  deny /home/raphael/.kde/** r,
   deny /run/user/*/dconf/user rw,
   deny /usr/bin/kde-open x,
   deny /usr/lib/purple-2/** mr,
@@ -34,10 +32,12 @@
   deny @{HOME}/.config/enchant/* rwk,
   deny @{HOME}/.config/fontconfig/fonts.conf r,
   deny @{HOME}/.config/gtk-3.0/settings.ini r,
+  deny @{HOME}/.config/oxygen-gtk/* rw,
   deny @{HOME}/.cshrc rw,
   deny @{HOME}/.gnome2/nautilus-sendto/** rw,
   deny @{HOME}/.gstreamer*/ rw,
   deny @{HOME}/.gstreamer*/** rw,
+  deny @{HOME}/.kde/** r,
   deny @{HOME}/.local/share/webkit/icondatabase/WebpageIcons.db rw,
   deny @{HOME}/.profile rw,
   deny @{HOME}/.pulse-cookie rwk,
@@ -45,7 +45,6 @@
   deny @{HOME}/.pulse/** rw,
   deny @{HOME}/.ssh/* rw,
   deny @{HOME}/.zshrc rw,
-  deny @{HOME}/gits/dotfiles/_fonts/ r,
 
   /dev/shm/ r,
   /dev/shm/* rw,
@@ -53,7 +52,6 @@
   /etc/pkcs11/modules/gnome-keyring.module r,
   /etc/purple/prefs.xml r,
   /etc/ssl/certs/ r,
-  /proc/*/cmdline r,
   /usr/bin/gconftool-2 rix,
   /usr/bin/gnome-default-applications-properties ix,
   /usr/bin/gnome-network-preferences ix,
