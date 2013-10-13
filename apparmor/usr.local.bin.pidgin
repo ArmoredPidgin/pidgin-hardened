@@ -1,0 +1,84 @@
+# Last Modified: Sun Oct 13 02:43:21 2013
+#include <tunables/global>
+
+/usr/local/bin/pidgin {
+  #include <abstractions/X>
+  #include <abstractions/base>
+  #include <abstractions/bash>
+  #include <abstractions/consoles>
+  #include <abstractions/fonts>
+  #include <abstractions/freedesktop.org>
+  #include <abstractions/gnome>
+  #include <abstractions/launchpad-integration>
+  #include <abstractions/nameservice>
+  #include <abstractions/user-download>
+  #include <abstractions/user-tmp>
+
+  capability sys_ptrace,
+
+
+  deny /bin/dash x,
+  deny /home/raphael/.config/oxygen-gtk/argb-apps.conf rw,
+  deny /home/raphael/.kde/** r,
+  deny /run/user/*/dconf/user rw,
+  deny /usr/bin/kde-open x,
+  deny /usr/lib/purple-2/** mr,
+  deny /usr/share/enchant/enchant.ordering r,
+  deny /usr/share/hunspell/en_US.aff r,
+  deny /usr/share/hunspell/en_US.dic r,
+  deny /usr/share/javascript/mathjax/fonts/HTML-CSS/TeX/otf/ r,
+  deny /usr/share/kubuntu-default-settings/** r,
+  deny @{HOME}/.bash* rw,
+  deny @{HOME}/.config/dconf/user r,
+  deny @{HOME}/.config/enchant/ rw,
+  deny @{HOME}/.config/enchant/* rwk,
+  deny @{HOME}/.config/fontconfig/fonts.conf r,
+  deny @{HOME}/.config/gtk-3.0/settings.ini r,
+  deny @{HOME}/.cshrc rw,
+  deny @{HOME}/.gnome2/nautilus-sendto/** rw,
+  deny @{HOME}/.gstreamer*/ rw,
+  deny @{HOME}/.gstreamer*/** rw,
+  deny @{HOME}/.local/share/webkit/icondatabase/WebpageIcons.db rw,
+  deny @{HOME}/.profile rw,
+  deny @{HOME}/.pulse-cookie rwk,
+  deny @{HOME}/.pulse/ rw,
+  deny @{HOME}/.pulse/** rw,
+  deny @{HOME}/.ssh/* rw,
+  deny @{HOME}/.zshrc rw,
+  deny @{HOME}/gits/dotfiles/_fonts/ r,
+
+  /dev/shm/ r,
+  /dev/shm/* rw,
+  /etc/pkcs11/modules/ r,
+  /etc/pkcs11/modules/gnome-keyring.module r,
+  /etc/purple/prefs.xml r,
+  /etc/ssl/certs/ r,
+  /proc/*/cmdline r,
+  /usr/bin/gconftool-2 rix,
+  /usr/bin/gnome-default-applications-properties ix,
+  /usr/bin/gnome-network-preferences ix,
+  /usr/bin/pidgin r,
+  /usr/lib/libvisual-*/**.so mr,
+  /usr/lib/x86_64-linux-gnu/pkcs11/gnome-keyring-pkcs*.so mr,
+  /usr/local/lib/libpurple.so.* mr,
+  /usr/local/lib/pidgin/ r,
+  /usr/local/lib/pidgin/* mr,
+  /usr/local/lib/purple-2/ r,
+  /usr/local/lib/purple-2/* mr,
+  /usr/local/share/locale/** r,
+  /usr/local/share/pidgin/** r,
+  /usr/local/share/purple/** r,
+  /usr/share/ca-certificates/*/** r,
+  /usr/share/glib-2.0/schemas/gschemas.compiled r,
+  /usr/share/locale-langpack/** mr,
+  /usr/share/tcltk/** r,
+  /usr/share/themes/ r,
+  /usr/share/themes/* r,
+  owner @{HOME}/.local/share/icons/ r,
+  owner @{HOME}/.local/share/mime/* r,
+  owner @{HOME}/.purple/ rw,
+  owner @{HOME}/.purple/** rwk,
+  owner @{PROC}/cmdline r,
+  owner @{PROC}/fd/ r,
+
+}
