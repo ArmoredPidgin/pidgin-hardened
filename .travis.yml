@@ -2,6 +2,7 @@ language: cpp
 compiler:
   - gcc
 before_script:
-  - apt-get build-dep pidgin
+  - sudo apt-get -qq update
+  - sudo apt-get -qq build-dep pidgin
 script: ./autogen.sh && make
 after_script: make check
