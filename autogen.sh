@@ -59,6 +59,9 @@ CONFIGURE_FLAGS="--disable-screensaver --disable-sm --disable-startup-notificati
 
 # future: --disable-gstreamer-video, --disable-gnome-keyring, --disable-kwallet
 
+CFLAGS="$CFLAGS -fpie -fstack-protector-all -fwrapv --param ssp-buffer-size=1 -fno-strict-overflow"
+LDFLAGS="$LDFLAGS -pie -z relro -z now -D_FORTIFY_SOURCE=2"
+
 export CFLAGS
 export LDFLAGS
 
