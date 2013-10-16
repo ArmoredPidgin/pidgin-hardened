@@ -1,4 +1,7 @@
 language: cpp
 compiler:
   - gcc
+before_script:
+  - apt-get build-dep pidgin
 script: ./autogen.sh && make
+after_script: make check
