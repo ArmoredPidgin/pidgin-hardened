@@ -1,7 +1,7 @@
 # Last Modified: Sun Oct 20 23:59:18 2013
 #include <tunables/global>
 
-/usr/local/bin/pidgin flags=(complain) {
+/usr/local/bin/pidgin {
   #include <abstractions/X>
   #include <abstractions/base>
   #include <abstractions/consoles>
@@ -22,7 +22,7 @@
 
   deny /bin/dash rx,
   deny /etc/kde4rc r,
-  deny /home/raphael/.kde/share/config/kdeglobals r,
+  deny @{HOME}/.kde/share/config/kdeglobals r,
   deny /run/user/*/dconf/user rw,
   deny /usr/bin/kde-open x,
   deny /usr/bin/kde4-config r,
