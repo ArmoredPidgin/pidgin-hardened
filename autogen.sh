@@ -55,7 +55,7 @@ CONFIGURE_FLAGS="--disable-screensaver --disable-sm --disable-startup-notificati
     --disable-tcl --disable-gstreamer --disable-meanwhile --disable-farstream \
     --disable-gestures --disable-gstreamer-interfaces --disable-nm --disable-perl \
     --disable-tk --disable-doxygen --disable-dot --disable-devhelp
-    --with-static-prpls=jabber --disable-gnutls --prefix=/usr/local/"
+    --with-static-prpls=jabber,msn,oscar --prefix=/usr/local/"
 
 # future: --disable-gstreamer-video, --disable-gnome-keyring, --disable-kwallet
 
