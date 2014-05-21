@@ -48,6 +48,20 @@
 ###############################################################################
 PACKAGE="Pidgin"
 ARGS_FILE="autogen.args"
+
+#Hardening
+CONFIGURE_FLAGS="--disable-screensaver --disable-sm --disable-startup-notification \
+    --disable-gtkspell --disable-dbus --disable-avahi --disable-vv --disable-tk \
+    --disable-tcl --disable-gstreamer --disable-meanwhile --disable-farstream \
+    --disable-gestures --disable-gstreamer-interfaces --disable-nm --disable-perl \
+    --disable-tk --disable-doxygen --disable-dot --disable-devhelp
+    --with-static-prpls=jabber --prefix=/usr/local/"
+
+# future: --disable-gstreamer-video, --disable-gnome-keyring, --disable-kwallet
+
+CFLAGS="$CFLAGS -fpie -fstack-protector-all -fwrapv --param ssp-buffer-size=1 -fno-strict-overflow"
+LDFLAGS="$LDFLAGS -pie -z relro -z now -D_FORTIFY_SOURCE=2"
+
 export CFLAGS
 export LDFLAGS
 
