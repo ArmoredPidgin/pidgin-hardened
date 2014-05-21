@@ -1,0 +1,8 @@
+language: cpp
+compiler:
+  - gcc
+before_script:
+  - sudo apt-get -qq update
+  - sudo apt-get -qq build-dep pidgin
+script: ./autogen.sh && make
+after_script: make check

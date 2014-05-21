@@ -191,7 +191,7 @@ debug_symbols_zip: install
 	 -not \( -false $(EXTERNAL_DLLS_FIND_EXP) \) -print` \
 	 | tar --strip 2 --xform s/$$/.dbgsym/ -xC $(DEBUG_SYMBOLS_DIR) -f -
 	cp $(MEANWHILE_TOP)/bin/libmeanwhile-1.dll.unstripped $(DEBUG_SYMBOLS_DIR)/libmeanwhile-1.dll.dbgsym
-	zip -9 -r $(DEBUG_SYMBOLS_DIR).zip $(DEBUG_SYMBOLS_DIR) 
+	zip -9 -r $(DEBUG_SYMBOLS_DIR).zip $(DEBUG_SYMBOLS_DIR)
 	$(call gpg_sign, $(DEBUG_SYMBOLS_DIR).zip)
 
 installers: installer installer_offline debug_symbols_zip installer_zip
@@ -217,3 +217,12 @@ uninstall:
 
 include $(PIDGIN_COMMON_TARGETS)
 
+CC_HARDENING_OPTIONS ?= -fstack-protector-all -Wstack-protector -fwrapv \
+            --param ssp-buffer-size=1 -fno-strict-overflow -Wall -Wextra \
+            -Wno-unused-parameter -Wno-missing-field-initializers -Wformat-security
+
+LD_HARDENING_OPTIONS ?= -Wl,--dynamicbase -Wl,--nxcompat
+
+LDFLAGS = -Wl,--enable-auto-image-base $(LD_HARDENING_OPTIONS)
+LDLIBS = -lssp
+override CFLAGS += -g -O2 -Wall $(CC_HARDENING_OPTIONS)
