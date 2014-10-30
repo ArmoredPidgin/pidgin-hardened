@@ -2,23 +2,40 @@
 #include <tunables/global>
 
 /usr/local/bin/pidgin {
-  #include <abstractions/X>
+  #include <abstractions/aspell>
   #include <abstractions/base>
   #include <abstractions/consoles>
-  #include <abstractions/enchant>
   #include <abstractions/fonts>
   #include <abstractions/freedesktop.org>
   #include <abstractions/gnome>
-  #include <abstractions/launchpad-integration>
   #include <abstractions/nameservice>
   #include <abstractions/p11-kit>
   #include <abstractions/private-files-strict>
   #include <abstractions/ssl_certs>
   #include <abstractions/user-download>
-  #include <abstractions/user-tmp>
 
   capability sys_ptrace,
 
+  deny / r,
+  deny /etc/fstab r,
+  deny /etc/host.conf r,
+  deny /etc/hosts r,
+  deny /etc/nsswitch.conf r,
+  deny /etc/resolv.conf r,
+  deny /etc/passwd r,
+  deny /etc/group r,
+
+  deny @{HOME}/.bash* rw,
+  deny @{HOME}/.cshrc rw,
+  deny @{HOME}/.profile rw,
+  deny @{HOME}/.zshrc rw,
+  deny @{HOME}/Documents/** r,
+
+  deny @{HOME}/orcexec* rw,
+  deny /tmp/orcexec* rw,
+  deny /{,var/}run/user/*/orcexec* rw,
+
+  deny @{PROC}** r,
 
   deny /bin/dash rx,
   deny /etc/kde4rc r,
@@ -29,12 +46,10 @@
   deny /usr/bin/pidgin r,
   deny /usr/lib/purple-2/** mr,
   deny /usr/share/kubuntu-default-settings/** r,
-  deny @{HOME}/.bash* rw,
   deny @{HOME}/.config/dconf/user r,
   deny @{HOME}/.config/fontconfig/fonts.conf r,
   deny @{HOME}/.config/gtk-3.0/settings.ini r,
   deny @{HOME}/.config/oxygen-gtk/* rw,
-  deny @{HOME}/.cshrc rw,
   deny @{HOME}/.gnome2/nautilus-sendto/** rw,
   deny @{HOME}/.gstreamer*/ rw,
   deny @{HOME}/.gstreamer*/** rw,
